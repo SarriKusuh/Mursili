@@ -143,40 +143,40 @@
 
                                 // Loop through each item in the JSON data
                                 data.forEach(livre => {
-                                    // Create the main card container
-                                    const card = document.createElement('div');
-                                    card.className = "p-4 border-2 border-[#E2E833] rounded-xl flex flex-col items-center text-center";
+                                // Create the main card container
+                                const card = document.createElement('div');
+                                card.className = "p-4 border-2 border-[#E2E833] rounded-xl flex flex-col items-center text-center";
 
-                                    // Create and set the image
-                                    const image = document.createElement('img');
-                                    image.src = `livres/${livre.image}`;
-                                    image.alt = livre.Titre;
-                                    image.className = "w-full h-auto rounded-lg mb-2";
+                                // Create and set the image
+                                const image = document.createElement('img');
+                                image.src = `livres/${livre.image}`;
+                                image.alt = livre.Titre;
+                                image.className = "w-full h-auto rounded-lg mb-2";
 
-                                    // Create and set the title
-                                    const titre = document.createElement('h3');
-                                    titre.className = "text-xl font-bold text-white mb-2";
-                                    titre.textContent = livre.Titre;
+                                // Create and set the title
+                                const titre = document.createElement('h3');
+                                titre.className = "text-xl font-bold text-white mb-2";
+                                titre.textContent = livre.Titre;
 
-                                    // Create and set the description
-                                    const description = document.createElement('p');
-                                    description.className = "text-gray-300 text-sm flex-grow";
-                                    description.textContent = livre.Description;
+                                // Create and set the description
+                                const description = document.createElement('p');
+                                description.className = "text-gray-300 text-sm flex-grow";
+                                description.textContent = livre.Description;
 
-                                    // Create and set the price
-                                    const prix = document.createElement('p');
-                                    prix.className = "text-xl font-bold text-white mt-4";
-                                    prix.textContent = `${livre.Prix} €`;
+                                // Create and set the price
+                                const prix = document.createElement('p');
+                                prix.className = "text-xl font-bold text-white mt-4";
+                                prix.textContent = `${livre.Prix} €`;
 
-                                    // Append the elements to the card
-                                    card.appendChild(image);
-                                    card.appendChild(titre);
-                                    card.appendChild(description);
-                                    card.appendChild(prix);
+                                // Append the elements to the card in the correct order
+                                card.appendChild(image);
+                                card.appendChild(titre);
+                                card.appendChild(description);
+                                card.appendChild(prix);
 
-                                    // Append the finished card to the main container
-                                    container.appendChild(card);
-                                });
+                                // Append the finished card to the main container
+                                container.appendChild(card);
+                            });
                             })
                             .catch(error => console.error('Erreur lors du chargement du fichier JSON:', error));
                     });
