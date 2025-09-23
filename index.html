@@ -128,7 +128,7 @@
             <!-- Livres sur la foi Section -->
             <section id="livres-sur-la-foi" class="content-section hidden">
                 <div class="bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg">
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Livres sur la foi test version 2</h2>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Livres sur la foi test version 4</h2>
                     <div id="livres-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     </div>
                 </div>
@@ -162,6 +162,11 @@
                                 const description = document.createElement('p');
                                 description.className = "text-gray-300 text-sm flex-grow";
                                 description.textContent = livre.Description;
+
+                                // Create and set the description
+                                const description = document.createElement('p');
+                                description.className = "text-gray-300 text-sm flex-grow";
+                                description.textContent = livre.image;
 
                                 // Create and set the price
                                 const prix = document.createElement('p');
