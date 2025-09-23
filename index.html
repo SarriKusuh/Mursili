@@ -129,55 +129,51 @@
             <section id="livres-sur-la-foi" class="content-section hidden">
                 <div class="bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Livres sur la foi</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Book 1 -->
-                        <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
-                            <img src="livres/Le Petit Berger des Collines.png" alt="Le Petit Berger des Collines" class="w-full h-auto rounded-lg mb-4">
-                            <h3 class="text-xl font-bold text-[#E2E833] mb-2">Le Petit Berger des Collines</h3>
-                            <p class="text-gray-300 text-sm">Description du livre, y compris un bref résumé, les thèmes principaux et l'auteur. Ce livre explore des concepts profonds et offre une perspective unique sur le monde qui nous entoure.</p>
-                        </div>
-                        <!-- Book 2 -->
-                        <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
-                            <img src="livres/Il est Vivant.jpg" alt="Il est Vivant" class="w-full h-auto rounded-lg mb-4">
-                            <h3 class="text-xl font-bold text-[#E2E833] mb-2">Il est Vivant</h3>
-                            <p class="text-gray-300 text-sm">Il est vivant ! L’histoire de Pâques.
-
-                                Ce livre est spécialement conçu pour expliquer aux enfants le cœur du message chrétien. À travers un récit captivant et des illustrations chaleureuses, vos petits explorateurs de la foi découvriront la puissance de l’amour de Jésus, sa mort sur la croix et sa résurrection qui apporte l’espoir et la vie éternelle.
-
-                                Ce livre, accessible et adapté aux jeunes lecteurs, est un outil précieux pour transmettre l’essence de Pâques d’une manière joyeuse et inspirante. Un cadeau idéal pour accompagner les célébrations en famille ou en église. Dans ce livre :
-
-                                Un langage simple pour les enfants.
-                                Des illustrations qui captivent l’imagination.
-                                Une introduction douce aux valeurs chrétiennes.
-                                Offrez à vos enfants une histoire pleine d’espoir qui restera gravée dans leurs cœurs!</p>
-                        </div>
-                        <!-- Book 3 -->
-                        <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
-                            <img src="livres/Le grand chagrin de Lolie Chenille.png" alt="Le grand chagrin de Lolie Chenille" class="w-full h-auto rounded-lg mb-4">
-                            <h3 class="text-xl font-bold text-[#E2E833] mb-2">Le grand chagrin de Lolie Chenille</h3>
-                            <p class="text-gray-300 text-sm">Description du livre, y compris un bref résumé, les thèmes principaux et l'auteur. Ce livre explore des concepts profonds et offre une perspective unique sur le monde qui nous entoure.</p>
-                        </div>
-                        <!-- Book 4 -->
-                        <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
-                            <img src="livres/Une etoile pour Lolie Chenille.png" alt="Une etoile pour Lolie Chenille" class="w-full h-auto rounded-lg mb-4">
-                            <h3 class="text-xl font-bold text-[#E2E833] mb-2">Une etoile pour Lolie Chenille</h3>
-                            <p class="text-gray-300 text-sm">Description du livre, y compris un bref résumé, les thèmes principaux et l'auteur. Ce livre explore des concepts profonds et offre une perspective unique sur le monde qui nous entoure.</p>
-                        </div>
-                        <!-- Book 5 -->
-                        <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
-                            <img src="livres/J'ai suivi l'étoile.jpg" alt="J'ai suivi l'étoile" class="w-full h-auto rounded-lg mb-4">
-                            <h3 class="text-xl font-bold text-[#E2E833] mb-2">J'ai suivi l'étoile</h3>
-                            <p class="text-gray-300 text-sm">✨ J’ai suivi l’étoile – Un conte de Noël chrétien pour toute la famille
-                                Un livre de Noël chrétien illustré, profond et lumineux, qui raconte la naissance de Jésus à travers les yeux des personnages de la Nativité : les mages, les anges, les bergers, Joseph et Marie.
-                                À travers leurs témoignages, suivez la lumière de l’étoile… jusqu’à l’enfant de la crèche
-
-                                🎄 Une histoire biblique pour préparer son cœur pendant l’Avent
-                                "J’ai suivi l’étoile" est bien plus qu’un simple livre de Noël : c’est un véritable outil pour l’Avent, idéal pour aider les enfants et les familles à se recentrer sur la véritable signification de Noël.
-
-                                Chaque page vous emmène à la rencontre de ceux qui ont accueilli le Roi des rois, et vous invite à faire de même dans votre propre cœur.</p>
-                        </div>
+                    <div id="livres-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     </div>
                 </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Fetch the JSON file
+                        fetch('votre_fichier.json')
+                            .then(response => response.json())
+                            .then(data => {
+                                const container = document.getElementById('livres-grid');
+
+                                // Loop through each item in the JSON data
+                                data.forEach(livre => {
+                                    // Create the main card container
+                                    const card = document.createElement('div');
+                                    card.className = "p-4 border-2 border-[#E2E833] rounded-xl flex flex-col items-center text-center";
+
+                                    // Create and set the title
+                                    const titre = document.createElement('h3');
+                                    titre.className = "text-xl font-bold text-white mb-2";
+                                    titre.textContent = livre.Titre;
+
+                                    // Create and set the description
+                                    const description = document.createElement('p');
+                                    description.className = "text-gray-300 text-sm flex-grow";
+                                    description.textContent = livre.Description;
+
+                                    // Create and set the price
+                                    const prix = document.createElement('p');
+                                    prix.className = "text-xl font-bold text-white mt-4";
+                                    prix.textContent = `${livre.Prix} €`;
+
+                                    // Append the elements to the card
+                                    card.appendChild(titre);
+                                    card.appendChild(description);
+                                    card.appendChild(prix);
+
+                                    // Append the finished card to the main container
+                                    container.appendChild(card);
+                                });
+                            })
+                            .catch(error => console.error('Erreur lors du chargement du fichier JSON:', error));
+                    });
+                </script>
             </section>
 
             <!-- Livres scolaires Section -->
