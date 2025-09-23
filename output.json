@@ -3,30 +3,30 @@
         "Titre":"Le petit berger des collines",
         "Description":"Moutons \u2026",
         "Prix":"17,90",
-        "Image":"Berger"
+        "Image":"Le Petit Berger des Collines"
     },
     {
         "Titre":"Le grand chagrin de Lolie Chenille",
         "Description":"Grandma \u2026",
         "Prix":"17,90",
-        "Image":"Lolie1"
+        "Image":"Le grand chagrin de Lolie Chenille"
     },
     {
         "Titre":"Une \u00e9toile for Lolie Chenille",
         "Description":"Fraises\u2026",
         "Prix":"19,90",
-        "Image":"Lolie2"
+        "Image":"Une etoile pour Lolie Chenille"
     },
     {
         "Titre":"J'ai suivi l'\u00e9toile",
         "Description":"No\u00ebl",
         "Prix":"23,00",
-        "Image":"Etoile"
+        "Image":"J'ai suivi l'étoile"
     },
     {
-        "Titre":"No\u00e9 : toutes ces b\u00eates, quelle casse tête !",
+        "Titre":"Il est Vivant",
         "Description":"Deluge\u2026",
         "Prix":"18,90",
-        "Image":"Arche"
+        "Image":"Il est Vivant"
     }
 ]

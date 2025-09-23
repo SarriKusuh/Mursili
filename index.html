@@ -147,6 +147,12 @@
                                     const card = document.createElement('div');
                                     card.className = "p-4 border-2 border-[#E2E833] rounded-xl flex flex-col items-center text-center";
 
+                                    // Create and set the image
+                                    const image = document.createElement('img');
+                                    image.src = `Livres/${livre.image}`;
+                                    image.alt = livre.Titre;
+                                    image.className = "w-full h-auto rounded-lg mb-2";
+
                                     // Create and set the title
                                     const titre = document.createElement('h3');
                                     titre.className = "text-xl font-bold text-white mb-2";
@@ -163,6 +169,7 @@
                                     prix.textContent = `${livre.Prix} €`;
 
                                     // Append the elements to the card
+                                    card.appendChild(image);
                                     card.appendChild(titre);
                                     card.appendChild(description);
                                     card.appendChild(prix);
