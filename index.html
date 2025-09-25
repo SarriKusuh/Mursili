@@ -79,10 +79,8 @@
 </head>
 <body>
 
-    <!-- Main Content Wrapper, no longer needs menu-open class -->
     <div id="main-content" class="min-h-screen flex flex-col">
 
-        <!-- Header with Hamburger Menu -->
         <header class="p-4 shadow-lg flex items-center justify-between bg-gray-900 header-bg">
             <div class="flex items-center gap-2">
                 <h1 class="text-xl sm:text-2xl font-bold text-[#E2E833]">Fizzy Star</h1>
@@ -97,7 +95,6 @@
             </button>
         </header>
 
-        <!-- Sidebar Navigation -->
         <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-800 shadow-xl sidebar">
             <div class="p-4">
                 <h2 class="text-2xl font-bold text-white mb-6 pt-4">Menu</h2>
@@ -114,10 +111,8 @@
             </div>
         </div>
 
-        <!-- Content Sections -->
         <main class="flex-grow p-6 sm:p-8 space-y-12 z-10">
 
-            <!-- Accueil Section -->
             <section id="accueil" class="content-section">
                 <div class="bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Accueil</h2>
@@ -125,94 +120,38 @@
                 </div>
             </section>
 
-            <!-- Livres sur la foi Section -->
             <section id="livres-sur-la-foi" class="content-section hidden">
                 <div class="bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg">
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Livres sur la foi test version 5</h2>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Livres sur la foi test version 6</h2>
                     <div id="livres-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     </div>
                 </div>
-
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        // Fetch the JSON file
-                        fetch('output.json')
-                            .then(response => response.json())
-                            .then(data => {
-                                const container = document.getElementById('livres-grid');
-
-                                // Loop through each item in the JSON data
-                                data.forEach(livre => {
-                                // Create the main card container
-                                const card = document.createElement('div');
-                                card.className = "p-4 border-2 border-[#E2E833] rounded-xl flex flex-col items-center text-center";
-
-                                // Create and set the image
-                                const image = document.createElement('img');
-                                image.src = `livres/${livre.image}`;
-                                image.alt = livre.image;
-                                image.className = "w-full h-auto rounded-lg mb-2";
-
-                                // Create and set the title
-                                const titre = document.createElement('h3');
-                                titre.className = "text-xl font-bold text-white mb-2";
-                                titre.textContent = livre.Titre;
-
-                                // Create and set the description
-                                const description = document.createElement('p');
-                                description.className = "text-gray-300 text-sm flex-grow";
-                                description.textContent = livre.Description;
-
-                                // Create and set the price
-                                const prix = document.createElement('p');
-                                prix.className = "text-xl font-bold text-white mt-4";
-                                prix.textContent = `${livre.Prix} €`;
-
-                                // Append the elements to the card in the correct order
-                                card.appendChild(image);
-                                card.appendChild(titre);
-                                card.appendChild(description);
-                                card.appendChild(prix);
-
-                                // Append the finished card to the main container
-                                container.appendChild(card);
-                            });
-                            })
-                            .catch(error => console.error('Erreur lors du chargement du fichier JSON:', error));
-                    });
-                </script>
             </section>
 
-            <!-- Livres scolaires Section -->
             <section id="livres-scolaires" class="content-section hidden">
                 <div class="bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Livres scolaires</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Book 1 -->
                         <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
                             <img src="livres/Le Petit Berger des Collines.png" alt="Le Petit Berger des Collines" class="w-full h-auto rounded-lg mb-4">
                             <h3 class="text-xl font-bold text-[#E2E833] mb-2">Le Petit Berger des Collines</h3>
                             <p class="text-gray-300 text-sm">Description du livre, y compris un bref résumé, les thèmes principaux et l'auteur. Ce livre explore des concepts profonds et offre une perspective unique sur le monde qui nous entoure.</p>
                         </div>
-                        <!-- Book 2 -->
                         <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
                             <img src="livres/Il est Vivant.jpg" alt="Il est Vivant" class="w-full h-auto rounded-lg mb-4">
                             <h3 class="text-xl font-bold text-[#E2E833] mb-2">Il est Vivant</h3>
                             <p class="text-gray-300 text-sm">Description du livre, y compris un bref résumé, les thèmes principaux et l'auteur. Ce livre explore des concepts profonds et offre une perspective unique sur le monde qui nous entoure.</p>
                         </div>
-                        <!-- Book 3 -->
                         <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
                             <img src="livres/Le grand chagrin de Lolie Chenille.png" alt="Le grand chagrin de Lolie Chenille" class="w-full h-auto rounded-lg mb-4">
                             <h3 class="text-xl font-bold text-[#E2E833] mb-2">Le grand chagrin de Lolie Chenille</h3>
                             <p class="text-gray-300 text-sm">Description du livre, y compris un bref résumé, les thèmes principaux et l'auteur. Ce livre explore des concepts profonds et offre une perspective unique sur le monde qui nous entoure.</p>
                         </div>
-                        <!-- Book 4 -->
                         <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
                             <img src="livres/Une etoile pour Lolie Chenille.png" alt="Une etoile pour Lolie Chenille" class="w-full h-auto rounded-lg mb-4">
                             <h3 class="text-xl font-bold text-[#E2E833] mb-2">Une etoile pour Lolie Chenille</h3>
                             <p class="text-gray-300 text-sm">Description du livre, y compris un bref résumé, les thèmes principaux et l'auteur. Ce livre explore des concepts profonds et offre une perspective unique sur le monde qui nous entoure.</p>
                         </div>
-                        <!-- Book 5 -->
                         <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
                             <img src="livres/J'ai suivi l'étoile.jpg" alt="J'ai suivi l'étoile" class="w-full h-auto rounded-lg mb-4">
                             <h3 class="text-xl font-bold text-[#E2E833] mb-2">J'ai suivi l'étoile</h3>
@@ -222,30 +161,23 @@
                 </div>
             </section>
 
-            <!-- Podcasts Section -->
             <section id="podcasts" class="content-section hidden">
                 <div class="bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Podcasts</h2>
                     <div class="grid grid-cols-1 gap-6">
-                        <!-- First Podcast -->
                         <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg">
-                            <!-- Removed aspect-ratio classes to allow a fixed height -->
                             <div class="w-full h-[400px]">
                                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/EulBGprDanY" title="AstroTalk: A Journey to the Stars" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                         </div>
 
-                        <!-- Second Podcast -->
                         <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg">
-                            <!-- Removed aspect-ratio classes to allow a fixed height -->
                             <div class="w-full h-[400px]">
                                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/GQOouuBIG-A" title="Cosmic Perspectives" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                         </div>
 
-                        <!-- Third Podcast -->
                         <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg">
-                            <!-- Removed aspect-ratio classes to allow a fixed height -->
                             <div class="w-full h-[400px]">
                                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/kmLSqzT-D3M" title="The Universe Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
@@ -254,26 +186,22 @@
                 </div>
             </section>
 
-            <!-- Articles Section -->
             <section id="articles" class="content-section hidden">
                 <div class="bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Articles</h2>
                     <div class="space-y-4">
-                        <!-- Article 1: Noah's Ark -->
                         <div class="bg-gray-700 rounded-xl p-4 shadow-md flex justify-between items-center">
                             <a href="articles/Noah's Ark - Colin Harris v3.pdf" target="_blank" class="text-white text-lg hover:text-[#E2E833] transition-colors duration-200 truncate">
                                 Noah's Ark - Colin Harris v3
                             </a>
                             <span class="text-gray-400 text-sm min-w-max ml-4">2024-10-26</span>
                         </div>
-                        <!-- Article 2: The Story of Ephesus -->
                         <div class="bg-gray-700 rounded-xl p-4 shadow-md flex justify-between items-center">
                             <a href="articles/The Story of Ephesus.pdf" target="_blank" class="text-white text-lg hover:text-[#E2E833] transition-colors duration-200 truncate">
                                 The Story of Ephesus
                             </a>
                             <span class="text-gray-400 text-sm min-w-max ml-4">2024-09-18</span>
                         </div>
-                        <!-- Article 3: In the beginning was the Logos -->
                         <div class="bg-gray-700 rounded-xl p-4 shadow-md flex justify-between items-center">
                             <a href="articles/In the beginning was the Logos.pdf" target="_blank" class="text-white text-lg hover:text-[#E2E833] transition-colors duration-200 truncate">
                                 In the beginning was the Logos
@@ -287,7 +215,6 @@
                 </div>
             </section>
             
-            <!-- Contact Section -->
             <section id="contact" class="content-section hidden">
                 <div class="bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Contact</h2>
@@ -298,7 +225,6 @@
         </main>
     </div>
 
-    <!-- Backdrop to close the menu on click/tap outside -->
     <div id="backdrop" class="backdrop"></div>
 
     <script>
@@ -308,11 +234,65 @@
             const backdrop = document.getElementById('backdrop');
             const menuLinks = document.querySelectorAll('.menu-link');
             const contentSections = document.querySelectorAll('.content-section');
+            
+            let booksDataFetched = false; // A flag to prevent multiple fetches
 
             // Function to close the menu
             const closeMenu = () => {
                 sidebar.classList.remove('open');
                 backdrop.classList.remove('visible');
+            };
+
+            // Function to load the books data
+            const loadBooks = () => {
+                if (booksDataFetched) {
+                    return; // Do nothing if data is already fetched
+                }
+                
+                fetch('output.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const container = document.getElementById('livres-grid');
+                        container.innerHTML = ''; // Clear previous content if any
+
+                        // Loop through each item in the JSON data
+                        data.forEach(livre => {
+                            const card = document.createElement('div');
+                            card.className = "p-4 border-2 border-[#E2E833] rounded-xl flex flex-col items-center text-center";
+                            
+                            // Create and set the image
+                            const image = document.createElement('img');
+                            image.src = `livres/${livre.Image}`;
+                            image.alt = livre.Titre;
+                            image.className = "w-full h-auto rounded-lg mb-2";
+
+                            // Create and set the title
+                            const titre = document.createElement('h3');
+                            titre.className = "text-xl font-bold text-white mb-2";
+                            titre.textContent = livre.Titre;
+
+                            // Create and set the description
+                            const description = document.createElement('p');
+                            description.className = "text-gray-300 text-sm flex-grow";
+                            description.textContent = livre.Description;
+
+                            // Create and set the price
+                            const prix = document.createElement('p');
+                            prix.className = "text-xl font-bold text-white mt-4";
+                            prix.textContent = `${livre.Prix} €`;
+
+                            // Append the elements to the card
+                            card.appendChild(image);
+                            card.appendChild(titre);
+                            card.appendChild(description);
+                            card.appendChild(prix);
+
+                            // Append the finished card to the main container
+                            container.appendChild(card);
+                        });
+                        booksDataFetched = true;
+                    })
+                    .catch(error => console.error('Erreur lors du chargement du fichier JSON:', error));
             };
 
             // Toggle the sidebar and backdrop visibility
@@ -328,7 +308,7 @@
             menuLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-
+                    
                     // Remove active class from all links
                     menuLinks.forEach(l => l.classList.remove('active'));
 
@@ -341,6 +321,11 @@
                     // Show the corresponding content section
                     const targetId = link.getAttribute('href').substring(1);
                     document.getElementById(targetId).classList.remove('hidden');
+
+                    // If the "Livres sur la foi" link is clicked, load the books
+                    if (targetId === 'livres-sur-la-foi') {
+                        loadBooks();
+                    }
 
                     // Close the sidebar after navigation
                     closeMenu();
