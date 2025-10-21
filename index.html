@@ -102,7 +102,7 @@
                     <ul class="space-y-4">
                         <li><a href="#accueil" class="menu-link text-lg block py-2 px-4 rounded-lg hover:bg-gray-700 active">Accueil</a></li>
                         <li><a href="#livres-sur-la-foi" class="menu-link text-lg block py-2 px-4 rounded-lg hover:bg-gray-700">Livres sur la foi</a></li>
-                        <li><a href="#livres-scolaires" class="menu-link text-lg block py-2 px-4 rounded-lg hover:bg-gray-700">Livres scolaires</a></li>
+                        <li><a href="#autres-livres" class="menu-link text-lg block py-2 px-4 rounded-lg hover:bg-gray-700">Autres Livres</a></li>
                         <li><a href="#podcasts" class="menu-link text-lg block py-2 px-4 rounded-lg hover:bg-gray-700">Podcasts</a></li>
                         <li><a href="#articles" class="menu-link text-lg block py-2 px-4 rounded-lg hover:bg-gray-700">Articles</a></li>
                         <li><a href="#contact" class="menu-link text-lg block py-2 px-4 rounded-lg hover:bg-gray-700">Contact</a></li>
@@ -128,35 +128,10 @@
                 </div>
             </section>
 
-            <section id="livres-scolaires" class="content-section hidden">
+            <section id="autres-livres" class="content-section hidden">
                 <div class="bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg">
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Livres scolaires</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
-                            <img src="livres/Le Petit Berger des Collines.png" alt="Le Petit Berger des Collines" class="w-full h-auto rounded-lg mb-4">
-                            <h3 class="text-xl font-bold text-[#E2E833] mb-2">Le Petit Berger des Collines</h3>
-                            <p class="text-gray-300 text-sm">Description du livre, y compris un bref résumé, les thèmes principaux et l'auteur. Ce livre explore des concepts profonds et offre une perspective unique sur le monde qui nous entoure.</p>
-                        </div>
-                        <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
-                            <img src="livres/Il est Vivant.jpg" alt="Il est Vivant" class="w-full h-auto rounded-lg mb-4">
-                            <h3 class="text-xl font-bold text-[#E2E833] mb-2">Il est Vivant</h3>
-                            <p class="text-gray-300 text-sm">Description du livre, y compris un bref résumé, les thèmes principaux et l'auteur. Ce livre explore des concepts profonds et offre une perspective unique sur le monde qui nous entoure.</p>
-                        </div>
-                        <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
-                            <img src="livres/Le grand chagrin de Lolie Chenille.png" alt="Le grand chagrin de Lolie Chenille" class="w-full h-auto rounded-lg mb-4">
-                            <h3 class="text-xl font-bold text-[#E2E833] mb-2">Le grand chagrin de Lolie Chenille</h3>
-                            <p class="text-gray-300 text-sm">Description du livre, y compris un bref résumé, les thèmes principaux et l'auteur. Ce livre explore des concepts profonds et offre une perspective unique sur le monde qui nous entoure.</p>
-                        </div>
-                        <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
-                            <img src="livres/Une etoile pour Lolie Chenille.png" alt="Une etoile pour Lolie Chenille" class="w-full h-auto rounded-lg mb-4">
-                            <h3 class="text-xl font-bold text-[#E2E833] mb-2">Une etoile pour Lolie Chenille</h3>
-                            <p class="text-gray-300 text-sm">Description du livre, y compris un bref résumé, les thèmes principaux et l'auteur. Ce livre explore des concepts profonds et offre une perspective unique sur le monde qui nous entoure.</p>
-                        </div>
-                        <div class="bg-gray-700 rounded-xl overflow-hidden shadow-lg p-4">
-                            <img src="livres/J'ai suivi l'étoile.jpg" alt="J'ai suivi l'étoile" class="w-full h-auto rounded-lg mb-4">
-                            <h3 class="text-xl font-bold text-[#E2E833] mb-2">J'ai suivi l'étoile</h3>
-                            <p class="text-gray-300 text-sm">Description du livre, y compris un bref résumé, les thèmes principaux et l'auteur. Ce livre explore des concepts profonds et offre une perspective unique sur le monde qui nous entoure.</p>
-                        </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Autres Livres</h2>
+                    <div id="autres-livres-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     </div>
                 </div>
             </section>
@@ -215,6 +190,7 @@
             const contentSections = document.querySelectorAll('.content-section');
             
             let booksDataFetched = false; // A flag to prevent multiple fetches
+            let otherBooksDataFetched = false; // A flag for other books data
             let articlesDataFetched = false; // Flag for articles data
 
             // Function to close the menu
@@ -238,6 +214,7 @@
                         // Loop through each item in the JSON data
                         data.forEach(livre => {
                             const card = document.createElement('div');
+                            // Ensure the card uses flex-col and justify-between to push the price/buy to the bottom
                             card.className = "p-4 border-2 border-[#E2E833] rounded-xl flex flex-col items-center text-center";
                             
                             // Create and set the image
@@ -255,17 +232,36 @@
                             const description = document.createElement('p');
                             description.className = "text-gray-300 text-sm flex-grow";
                             description.textContent = livre.Description;
+                            
+                            // Container for Price and Buy Button (to be displayed inline)
+                            const priceBuyContainer = document.createElement('div');
+                            // Use flexbox to align price and button horizontally
+                            priceBuyContainer.className = "flex items-center justify-center mt-4 w-full space-x-4";
 
                             // Create and set the price
                             const prix = document.createElement('p');
-                            prix.className = "text-xl font-bold text-white mt-4";
+                            // Keep the font bold and large
+                            prix.className = "text-xl font-bold text-white";
                             prix.textContent = `${livre.Prix} €`;
+
+                            // NEW: Create the Buy button
+                            const buyButton = document.createElement('a');
+                            // Set the link target from the 'Buy' field in the JSON
+                            buyButton.href = livre.Buy || "#"; // Use '#' if Buy field is missing
+                            buyButton.target = "_blank"; // Open in a new tab
+                            buyButton.className = "px-3 py-1 text-sm font-semibold text-gray-800 bg-[#E2E833] rounded-full shadow hover:bg-yellow-300 transition-colors duration-200";
+                            buyButton.textContent = "Acheter";
+
+                            // Append price and button to their container
+                            priceBuyContainer.appendChild(prix);
+                            priceBuyContainer.appendChild(buyButton);
 
                             // Append the elements to the card
                             card.appendChild(image);
                             card.appendChild(titre);
                             card.appendChild(description);
-                            card.appendChild(prix);
+                            // Append the container with price and buy button
+                            card.appendChild(priceBuyContainer);
 
                             // Append the finished card to the main container
                             container.appendChild(card);
@@ -275,7 +271,79 @@
                     .catch(error => console.error('Erreur lors du chargement du fichier JSON:', error));
             };
 
-            // NEW FUNCTION: Function to load the articles data
+            // Function to load the other books data
+            const loadOtherBooks = () => {
+                if (otherBooksDataFetched) {
+                    return; // Do nothing if data is already fetched
+                }
+                
+                fetch('output-autres-livres.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const container = document.getElementById('autres-livres-grid');
+                        container.innerHTML = ''; // Clear previous content if any
+
+                        // Loop through each item in the JSON data
+                        data.forEach(livre => {
+                            const card = document.createElement('div');
+                            // Ensure the card uses flex-col and justify-between to push the price/buy to the bottom
+                            card.className = "p-4 border-2 border-[#E2E833] rounded-xl flex flex-col items-center text-center";
+                            
+                            // Create and set the image
+                            const image = document.createElement('img');
+                            image.src = `livres/${livre.Image}`;
+                            image.alt = livre.Titre;
+                            image.className = "w-full h-auto rounded-lg mb-2";
+
+                            // Create and set the title
+                            const titre = document.createElement('h3');
+                            titre.className = "text-xl font-bold text-white mb-2";
+                            titre.textContent = livre.Titre;
+
+                            // Create and set the description
+                            const description = document.createElement('p');
+                            description.className = "text-gray-300 text-sm flex-grow";
+                            description.textContent = livre.Description;
+                            
+                            // Container for Price and Buy Button (to be displayed inline)
+                            const priceBuyContainer = document.createElement('div');
+                            // Use flexbox to align price and button horizontally
+                            priceBuyContainer.className = "flex items-center justify-center mt-4 w-full space-x-4";
+
+                            // Create and set the price
+                            const prix = document.createElement('p');
+                            // Keep the font bold and large
+                            prix.className = "text-xl font-bold text-white";
+                            prix.textContent = `${livre.Prix} €`;
+
+                            // NEW: Create the Buy button
+                            const buyButton = document.createElement('a');
+                            // Set the link target from the 'Buy' field in the JSON
+                            buyButton.href = livre.Buy || "#"; // Use '#' if Buy field is missing
+                            buyButton.target = "_blank"; // Open in a new tab
+                            buyButton.className = "px-3 py-1 text-sm font-semibold text-gray-800 bg-[#E2E833] rounded-full shadow hover:bg-yellow-300 transition-colors duration-200";
+                            buyButton.textContent = "Acheter";
+
+                            // Append price and button to their container
+                            priceBuyContainer.appendChild(prix);
+                            priceBuyContainer.appendChild(buyButton);
+
+                            // Append the elements to the card
+                            card.appendChild(image);
+                            card.appendChild(titre);
+                            card.appendChild(description);
+                            // Append the container with price and buy button
+                            card.appendChild(priceBuyContainer);
+
+                            // Append the finished card to the main container
+                            container.appendChild(card);
+                        });
+                        otherBooksDataFetched = true;
+                    })
+                    .catch(error => console.error('Erreur lors du chargement du fichier JSON (autres livres):', error));
+            };
+
+            // Function to load the articles data
             const loadArticles = () => {
                 if (articlesDataFetched) {
                     return; // Do nothing if data is already fetched
@@ -290,27 +358,37 @@
                         // Loop through each item in the JSON data
                         data.forEach(article => {
                             const articleDiv = document.createElement('div');
-                            // Styling for the article block: bg, rounded, shadow, and space-y-2 to separate elements
                             articleDiv.className = "bg-gray-700 rounded-xl p-4 shadow-md space-y-2";
                             
-                            // 1. Title link (using the 'filename' field for the PDF path)
+                            // Get the encoded filename for the link
+                            const encodedFilename = encodeURIComponent(article.filename);
+                            const fullPath = `articles/${encodedFilename}`;
+                            
+                            // 1. Title link
                             const titleLink = document.createElement('a');
-                            // Construction du chemin : 'articles/' + article.filename
-                            titleLink.href = `articles/${article.filename}`; 
+                            titleLink.href = fullPath; 
                             titleLink.target = "_blank"; // Opens in a new tab
-                            // Use 'block' to ensure it takes full width and emphasizes the title
                             titleLink.className = "text-white text-lg hover:text-[#E2E833] transition-colors duration-200 font-semibold block";
-                            titleLink.textContent = article.Titre; // Assumes key 'Titre'
-
+                            titleLink.textContent = article.Titre; 
+                            
                             // 2. Description paragraph
                             const descriptionP = document.createElement('p');
                             descriptionP.className = "text-gray-300 text-sm";
-                            descriptionP.textContent = article.Description; // Assumes key 'Description'
+                            descriptionP.textContent = article.Description; 
 
-                            // 3. Date span
+                            // 3. Date span (with conversion)
                             const dateSpan = document.createElement('span');
-                            dateSpan.className = "text-gray-400 text-sm block"; // Force it to a new line
-                            dateSpan.textContent = article.Date; // Assumes key 'Date'
+                            dateSpan.className = "text-gray-400 text-sm block"; 
+                            
+                            // Conversion de la date (timestamp en millisecondes)
+                            const timestamp = parseInt(article.Date, 10);
+                            if (!isNaN(timestamp)) {
+                                const articleDate = new Date(timestamp);
+                                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                                dateSpan.textContent = articleDate.toLocaleDateString('fr-FR', options);
+                            } else {
+                                dateSpan.textContent = article.Date; 
+                            }
 
                             // Assemble article div in the desired order (Title -> Description -> Date)
                             articleDiv.appendChild(titleLink);
@@ -357,7 +435,12 @@
                         loadBooks();
                     }
                     
-                    // NEW LOGIC: If the "Articles" link is clicked, load the articles
+                    // If the "Autres Livres" link is clicked, load the other books
+                    if (targetId === 'autres-livres') {
+                        loadOtherBooks();
+                    }
+                    
+                    // If the "Articles" link is clicked, load the articles
                     if (targetId === 'articles') {
                         loadArticles();
                     }
