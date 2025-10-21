@@ -122,7 +122,7 @@
 
             <section id="livres-sur-la-foi" class="content-section hidden">
                 <div class="bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg">
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Livres sur la foi test version 6</h2>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Livres sur la foi</h2>
                     <div id="livres-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     </div>
                 </div>
@@ -189,29 +189,8 @@
             <section id="articles" class="content-section hidden">
                 <div class="bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg">
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-[#E2E833] mb-4">Articles</h2>
-                    <div class="space-y-4">
-                        <div class="bg-gray-700 rounded-xl p-4 shadow-md flex justify-between items-center">
-                            <a href="articles/Noah's Ark - Colin Harris v3.pdf" target="_blank" class="text-white text-lg hover:text-[#E2E833] transition-colors duration-200 truncate">
-                                Noah's Ark - Colin Harris v3
-                            </a>
-                            <span class="text-gray-400 text-sm min-w-max ml-4">2024-10-26</span>
+                    <div id="articles-list" class="space-y-4">
                         </div>
-                        <div class="bg-gray-700 rounded-xl p-4 shadow-md flex justify-between items-center">
-                            <a href="articles/The Story of Ephesus.pdf" target="_blank" class="text-white text-lg hover:text-[#E2E833] transition-colors duration-200 truncate">
-                                The Story of Ephesus
-                            </a>
-                            <span class="text-gray-400 text-sm min-w-max ml-4">2024-09-18</span>
-                        </div>
-                        <div class="bg-gray-700 rounded-xl p-4 shadow-md flex justify-between items-center">
-                            <a href="articles/In the beginning was the Logos.pdf" target="_blank" class="text-white text-lg hover:text-[#E2E833] transition-colors duration-200 truncate">
-                                In the beginning was the Logos
-                            </a>
-                            <span class="text-gray-400 text-sm min-w-max ml-4">2024-09-01</span>
-                        </div>
-                        <p class="text-gray-500 text-sm mt-4 italic">
-                            (Note: The links above require you to have the corresponding PDF files in an 'articles' folder to function. Please update the dates to the correct last modified dates.)
-                        </p>
-                    </div>
                 </div>
             </section>
             
@@ -236,6 +215,7 @@
             const contentSections = document.querySelectorAll('.content-section');
             
             let booksDataFetched = false; // A flag to prevent multiple fetches
+            let articlesDataFetched = false; // Flag for articles data
 
             // Function to close the menu
             const closeMenu = () => {
@@ -249,7 +229,7 @@
                     return; // Do nothing if data is already fetched
                 }
                 
-                fetch('output.json')
+                fetch('output-livres-foi.json')
                     .then(response => response.json())
                     .then(data => {
                         const container = document.getElementById('livres-grid');
@@ -295,6 +275,56 @@
                     .catch(error => console.error('Erreur lors du chargement du fichier JSON:', error));
             };
 
+            // NEW FUNCTION: Function to load the articles data
+            const loadArticles = () => {
+                if (articlesDataFetched) {
+                    return; // Do nothing if data is already fetched
+                }
+                
+                fetch('output-articles.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const container = document.getElementById('articles-list');
+                        container.innerHTML = ''; // Clear previous content if any
+
+                        // Loop through each item in the JSON data
+                        data.forEach(article => {
+                            const articleDiv = document.createElement('div');
+                            // Styling for the article block: bg, rounded, shadow, and space-y-2 to separate elements
+                            articleDiv.className = "bg-gray-700 rounded-xl p-4 shadow-md space-y-2";
+                            
+                            // 1. Title link (using the 'filename' field for the PDF path)
+                            const titleLink = document.createElement('a');
+                            // Construction du chemin : 'articles/' + article.filename
+                            titleLink.href = `articles/${article.filename}`; 
+                            titleLink.target = "_blank"; // Opens in a new tab
+                            // Use 'block' to ensure it takes full width and emphasizes the title
+                            titleLink.className = "text-white text-lg hover:text-[#E2E833] transition-colors duration-200 font-semibold block";
+                            titleLink.textContent = article.Titre; // Assumes key 'Titre'
+
+                            // 2. Description paragraph
+                            const descriptionP = document.createElement('p');
+                            descriptionP.className = "text-gray-300 text-sm";
+                            descriptionP.textContent = article.Description; // Assumes key 'Description'
+
+                            // 3. Date span
+                            const dateSpan = document.createElement('span');
+                            dateSpan.className = "text-gray-400 text-sm block"; // Force it to a new line
+                            dateSpan.textContent = article.Date; // Assumes key 'Date'
+
+                            // Assemble article div in the desired order (Title -> Description -> Date)
+                            articleDiv.appendChild(titleLink);
+                            articleDiv.appendChild(descriptionP);
+                            articleDiv.appendChild(dateSpan);
+
+                            // Append the finished article div to the main container
+                            container.appendChild(articleDiv);
+                        });
+                        articlesDataFetched = true;
+                    })
+                    .catch(error => console.error('Erreur lors du chargement du fichier JSON (articles):', error));
+            };
+            
             // Toggle the sidebar and backdrop visibility
             menuButton.addEventListener('click', () => {
                 sidebar.classList.toggle('open');
@@ -325,6 +355,11 @@
                     // If the "Livres sur la foi" link is clicked, load the books
                     if (targetId === 'livres-sur-la-foi') {
                         loadBooks();
+                    }
+                    
+                    // NEW LOGIC: If the "Articles" link is clicked, load the articles
+                    if (targetId === 'articles') {
+                        loadArticles();
                     }
 
                     // Close the sidebar after navigation
