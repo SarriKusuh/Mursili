@@ -1,0 +1,38 @@
+[
+    {
+        "Titre":"No\u00e9: Toutes ces b\u00eates, quel casse-t\u00eate !",
+        "Description":"Un matin, No\u00e9 voit arriver tous les animaux de la terre pour entrer dans l\u2019arche\u2026\n\u00c9l\u00e9phants, girafes, lions, oiseaux, moutons : chacun veut passer le premier, chacun veut \u00eatre privil\u00e9gi\u00e9 ! Pauvre No\u00e9, qui se casse la t\u00eate \u00e0 organiser toute cette foule indisciplin\u00e9e\u2026\n\u00c0 travers ce conte biblique pour enfants, dr\u00f4le et touchant, les jeunes lecteurs d\u00e9couvrent l\u2019histoire de l\u2019arche de No\u00e9 sous un angle original, plein de vie et de tendresse.\nIllustr\u00e9 avec soin, cet album jeunesse biblique plonge les 5\u201310 ans dans une histoire de la Bible incontournable, tout en leur transmettant des valeurs de patience, confiance en Dieu et humilit\u00e9.",
+        "Prix":"24,99",
+        "Image":"Noe.jpg"
+    },
+    {
+        "Titre":"Le petit berger des collines",
+        "Description":"Nathanael a 11 ans. Tous les jours, il garde le troupeau de son p\u00e8re. Il a 100 moutons et il les conna\u00eet chacun par leur nom. 100 moutons, c\u2019est beaucoup de travail et une grande responsabilite\u00b4.",
+        "Prix":"17,90",
+        "Image":"berger.png"
+    },
+    {
+        "Titre":"Le grand chagrin de Lolie Chenille",
+        "Description":"Comment parler de la mort et de la R\u00e9surrection aux enfants ? C\u2019est suite \u00e0 cette interrogation v\u00e9cue que Patricia Harris et Sarah Melki Yriarte ont imagin\u00e9 et mis en images l\u2019histoire de Lolie Chenille. Pour mettre des mots sur la perte d\u2019un \u00eatre cher, pour donner de la place au chagrin et \u00e0 la douleur, mais aussi pour recevoir la consolation de pr\u00e9cieux bons souvenirs, et de l\u2019amour donn\u00e9, et enfin pour s\u2019ouvrir \u00e0 l\u2019esp\u00e9rance de la R\u00e9surrection.\n\nNouvelle \u00e9dition reli\u00e9e cartonn\u00e9e.",
+        "Prix":"17,90",
+        "Image":"lolie1.png"
+    },
+    {
+        "Titre":"Une \u00e9toile for Lilie Chenille",
+        "Description":"Lolie Chenille est une adorable petite chenille qui me\u0300ne une vie joyeuse et insouciante. Un jour, alors qu\u2019elle se prome\u0300ne avec Maman Chenille, elles de\u0301couvrent un be\u0301be\u0301 Luciole abandonne\u0301 sous la pluie. Lorsque Be\u0301be\u0301 Luciole arrive dans leur foyer, Lolie, qui au de\u0301but est remplie de bonheur et d\u2019enthousiasme, commence a\u0300 se poser des questions. Va-t-elle perdre sa place dans le c\u0153ur de ses parents, Papa Chenille et Maman Chenille, s\u2019ils adoptent Be\u0301be\u0301 Luciole ?",
+        "Prix":"19,90",
+        "Image":"lolie2.png"
+    },
+    {
+        "Titre":"J'ai suivi l'\u00e9toile",
+        "Description":"No\u00ebl, quelle joie, quelle lumi\u00e8re, quelle f\u00eate ! La naissance de J\u00e9sus racont\u00e9e tour \u00e0 tour par les rois mages, les anges, les bergers, Joseph et Marie. Pr\u00e9parons nos c\u0153urs en cette p\u00e9riode de l'avent \u00e0 rencontrer le Roi des rois. Suivons l'\u00e9toile pour nous retrouver \u00e0 ses pieds.",
+        "Prix":"23,00",
+        "Image":"etoile.jpg"
+    },
+    {
+        "Titre":"Il est Vivant",
+        "Description":"Il est vivant ! L\u2019histoire de P\u00e2ques.\n\nCe livre est sp\u00e9cialement con\u00e7u pour expliquer aux enfants le c\u0153ur du message chr\u00e9tien. \u00c0 travers un r\u00e9cit captivant et des illustrations chaleureuses, vos petits explorateurs de la foi d\u00e9couvriront la puissance de l\u2019amour de J\u00e9sus, sa mort sur la croix et sa r\u00e9surrection qui apporte l\u2019espoir et la vie \u00e9ternelle.\n\nCe livre, accessible et adapt\u00e9 aux jeunes lecteurs, est un outil pr\u00e9cieux pour transmettre l\u2019essence de P\u00e2ques d\u2019une mani\u00e8re joyeuse et inspirante. Un cadeau id\u00e9al pour accompagner les c\u00e9l\u00e9brations en famille ou en \u00e9glise. Dans ce livre :\n\nUn langage simple pour les enfants.\nDes illustrations qui captivent l\u2019imagination.\nUne introduction douce aux valeurs chr\u00e9tiennes.\nOffrez \u00e0 vos enfants une histoire pleine d\u2019espoir qui restera grav\u00e9e dans leurs c\u0153urs!",
+        "Prix":"18,90",
+        "Image":"vivant.jpg"
+    }
+]
